@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "887431291697",
+    "project_id": "codera-1c65b",
+    "storage_bucket": "codera-1c65b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887431291697:android:827887599c38d6802e4610",
+        "android_client_info": {
+          "package_name": "com.example.my_flutter_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqtF4WnZC6PpUrArgSRGgbAIy2BzBJmxE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
