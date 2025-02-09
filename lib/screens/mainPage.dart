@@ -5,12 +5,19 @@ import 'homeScreen.dart';
 import 'learnScreen.dart';
 import 'playScreen.dart';
 
+// Make sure to provide a RouteObserver in your MaterialApp:
+// MaterialApp(
+//   navigatorObservers: [routeObserver],
+//   ...
+// )
+final RouteObserver<ModalRoute<void>> routeObserver = RouteObserver<ModalRoute<void>>();
+
 class MainPage extends StatefulWidget {
   @override
   _MainPageState createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MainPageState extends State<MainPage> with RouteAware {
   /// Current tab: 0=Learn, 1=Home, 2=Play
   int _selectedIndex = 1;
 
@@ -34,6 +41,26 @@ class _MainPageState extends State<MainPage> {
         _balance = coinBalance;
       });
     }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Subscribe to route changes.
+    routeObserver.subscribe(this, ModalRoute.of(context)!);
+  }
+
+  @override
+  void dispose() {
+    // Unsubscribe from route changes.
+    routeObserver.unsubscribe(this);
+    super.dispose();
+  }
+
+  @override
+  void didPopNext() {
+    // Called when returning to this screen (e.g. from ProfileScreen).
+    _loadBalance();
   }
 
   @override
