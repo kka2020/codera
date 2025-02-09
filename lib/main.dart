@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:my_flutter_app/screens/mainPage.dart';
 import 'firebase_options.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -9,6 +10,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await Firebase.initializeApp();
+  await dotenv.load(fileName: ".env");
   runApp(MyApp());
 }
 

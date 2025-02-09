@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:my_flutter_app/utils/coin_utils.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class AsteroidsGame extends StatefulWidget {
   final int currentBalance;
@@ -130,7 +131,7 @@ class _AsteroidsGameState extends State<AsteroidsGame> {
 
   // Use OpenAI's API to generate asteroid data with increasing difficulty.
   Future<Asteroid> _fetchAsteroidFromOpenAI() async {
-    const apiKey = "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"; // Replace with your API key.
+    final apiKey = dotenv.env['API_KEY'] ?? ''; // Replace with your API key.
     final url = Uri.parse('https://api.openai.com/v1/chat/completions');
 
     // Compute requested difficulty: For example, every 2 correct answers increase the level.

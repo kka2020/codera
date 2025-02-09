@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'dart:convert';
 
 import 'package:my_flutter_app/utils/coin_utils.dart';
@@ -32,7 +33,7 @@ class _MinesGameState extends State<MinesGame> {
   late List<String> _tiles;
 
   List<Map<String, dynamic>> _questions = [];
-  final String _openAIKey = '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'; // Replace with your OpenAI API key
+  final String _openAIKey = dotenv.env['API_KEY'] ?? ''; // Replace with your OpenAI API key
 
   @override
   void initState() {

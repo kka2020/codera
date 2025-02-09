@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:http/http.dart' as http;
 import 'package:my_flutter_app/utils/coin_utils.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class LearnScreen extends StatefulWidget {
   final int currentBalance;
@@ -66,7 +67,7 @@ class _LearnScreenState extends State<LearnScreen> {
   /// - "backOptions": array of exactly 4 strings,
   /// - "correctIndex": an integer (0..3).
   Future<List<Map<String, dynamic>>> _fetchFromRAG(int count) async {
-    const apiKey = "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"; // Replace with your actual OpenAI API key
+    final apiKey = dotenv.env['API_KEY'] ?? ''; // Replace with your actual OpenAI API key
     final url = Uri.parse("https://api.openai.com/v1/chat/completions");
 
     final prompt = '''
